@@ -87,7 +87,7 @@ public class VendaDaoBd implements VendaDao {
             comando.setString(2, v.getCliente());
             comando.setString(3, v.getItens());
             comando.setInt(4, v.getValorTotal());
-            comando.setString(5, v.getCodigo());
+            comando.setInt(5, v.getId());
                        
             
             comando.executeUpdate();

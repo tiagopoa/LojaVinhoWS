@@ -46,9 +46,9 @@ public class ClienteWS {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Cliente> getCliente() {
-        return clienteDao.listar();        
-    }
+    public List<Cliente> getClientesss() {
+        return clienteDao.listar();           
+    }    
 
     /**
      * PUT method for updating or creating an instance of MotorWS

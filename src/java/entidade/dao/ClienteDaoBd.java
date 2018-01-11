@@ -32,9 +32,11 @@ public class ClienteDaoBd implements ClienteDao {
 
             String sql = "INSERT INTO cliente(nome,cpf) VALUES (?,?)";
 
+            
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, c.getNome());
             comando.setString(2, c.getCpf());
+            
 
             comando.executeUpdate();
 
@@ -103,7 +105,15 @@ public class ClienteDaoBd implements ClienteDao {
             Connection conexao = ConnectionFactory.getConnection();
 
             //Passo 3 e 4: Comando
-            String sql = "SELECT * FROM cliente";
+            //String sql = "SELECT * FROM cliente";
+            String sql = "SELECT c.info ->> 'id' as id,\n" +
+                         "c.info ->> 'nome' as nome,\n" +
+                         "c.info ->> 'cpf' as cpf,\n" +
+                         "sum((o.info ->> 'valorTotal')::float) as valor\n" +
+                         "from orders o, client c\n" +
+                         "where substring((c.info->>'cpf') from 13 for 2)=substring((o.info->>'cliente') from 14 for 2)\n" +
+                         "group by nome,c.id\n" +
+                         "order by valor desc;";
 
             List<Cliente> listaClientes = new ArrayList<>();
 
@@ -112,8 +122,9 @@ public class ClienteDaoBd implements ClienteDao {
             while (resultado.next()) {
                 int id = resultado.getInt("id");
                 String nome = resultado.getString("nome");                
-                String cpf = resultado.getString("cpf");               
-                Cliente c = new Cliente(id, nome, cpf);
+                String cpf = resultado.getString("cpf"); 
+                double valor = resultado.getDouble("valor");
+                Cliente c = new Cliente(id, nome, cpf, valor);
                 listaClientes.add(c);
 
             }
@@ -128,8 +139,8 @@ public class ClienteDaoBd implements ClienteDao {
             Logger.getLogger(ClienteDaoBd.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }
-
+    }    
+    
     @Override
     public Cliente buscarPorId(int id) {
         try {
@@ -147,8 +158,9 @@ public class ClienteDaoBd implements ClienteDao {
             if (resultado.next()) {
                 id = resultado.getInt("id");
                 String nome = resultado.getString("nome");                
-                String cpf = resultado.getString("cpf");               
-                cliente = new Cliente(id, nome, cpf);
+                String cpf = resultado.getString("cpf");    
+                double maiorValorTotal = resultado.getDouble("valor");
+                cliente = new Cliente(id, nome, cpf, maiorValorTotal);
             }
 
             //Passo 5: fechar conexao
@@ -162,6 +174,8 @@ public class ClienteDaoBd implements ClienteDao {
         }
         return null;
     }
+
+
 
 
 

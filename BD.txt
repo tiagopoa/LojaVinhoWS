@@ -1,0 +1,57 @@
+CREATE TABLE cliente(
+id serial PRIMARY KEY,
+nome varchar(30),
+cpf varchar(20))
+
+CREATE TABLE venda(
+id serial PRIMARY KEY,
+codigo varchar(50),
+data varchar(30),
+cliente varchar(20),
+itens varchar(20),
+valortotal integer)
+
+CREATE TABLE product(
+codigo varchar(50),
+produto varchar(50),
+variedade varchar(20),
+pais varchar(20),
+categoria varchar(20),
+safra varchar(4),
+preco int)
+
+
+
+
+BANCO JSON 
+CREATE TABLE public.venda
+(
+    id integer NOT NULL DEFAULT nextval('venda_id_seq'::regclass),
+    codigo character varying(50) COLLATE pg_catalog."default",
+    data character varying(30) COLLATE pg_catalog."default",
+    cliente character varying(20) COLLATE pg_catalog."default",
+    itens character varying(20) COLLATE pg_catalog."default",
+    valortotal integer,
+    CONSTRAINT venda_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+CREATE TABLE public.orders
+(
+    id integer NOT NULL DEFAULT nextval('orders_id_seq'::regclass),
+    info json NOT NULL,
+    CONSTRAINT orders_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.orders
+    OWNER to postgres;
+
+ALTER TABLE public.venda
+    OWNER to postgres;

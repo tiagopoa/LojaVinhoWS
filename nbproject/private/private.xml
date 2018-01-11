@@ -3,11 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/entidade/dao/ClienteDao.java</file>
+            <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/entidade/dao/VendaDaoBd.java</file>
+            <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/filtro/FiltroCORS.java</file>
             <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/ws/ClienteWS.java</file>
-            <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/ws/ApplicationConfig.java</file>
+            <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/entidade/Venda.java</file>
             <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/entidade/Cliente.java</file>
+            <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/entidade/dao/VendaDao.java</file>
+            <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/ws/ProdutoWS.java</file>
+            <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/entidade/dao/ClienteDao.java</file>
+            <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/ws/VendaWS.java</file>
+            <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/entidade/dao/ConnectionFactory.java</file>
+            <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/ws/ApplicationConfig.java</file>
             <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/entidade/dao/ClienteDaoBd.java</file>
+            <file>file:/C:/Users/objectedge-169/Documents/NetBeansProjects/LojaVinhos/src/java/entidade/Produto.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,8 +5,6 @@
  */
 package entidade;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import javax.xml.bind.annotation.XmlRootElement;
 /**
  *
@@ -14,12 +12,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class Venda implements Serializable {
-    private int id, valorTotal;  
-    private String codigo, data, cliente, itens;    
-    
-    //private String[] = new itens[];
-    
-        public Venda() {
+    private int id;
+    private int valorTotal;
+    private String codigo;
+    private String data;
+    private String cliente;
+    private String itens;
+
+    public Venda() {
     }
 
     public Venda(int id, String codigo, String data, String cliente, String itens, int valorTotal) {
@@ -30,10 +30,9 @@ public class Venda implements Serializable {
         this.cliente = cliente;
         this.itens = itens;
     }
+    
 
-   // public Venda(int id, String codigo, String data, String cliente, String itens, int valorTotal) {
-   //     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-   // }
+
 
     public int getId() {
         return id;
@@ -84,9 +83,6 @@ public class Venda implements Serializable {
     }
 
    
-
-    
-
    
 
 }

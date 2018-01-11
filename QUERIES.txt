@@ -1,0 +1,46 @@
+//seleciona cliente e o valor total da compra ordenando pelo maior valor total da compra
+SELECT
+info -> 'cliente' AS CLIENTE,
+info ->> 'valorTotal' as valor
+FROM
+ orders
+ ORDER BY
+cast(info ->> 'valorTotal' as float) desc;
+
+
+//ARRAY SELECIONA CAMPOS DENTRO DO ARRAY [ ]
+select 
+info #>> '{itens,0}' from orders;
+
+# 1 - Liste os clientes ordenados pelo maior valor total em compras. 
+SELECT c.info ->> 'id' as id,
+c.info ->> 'nome' as nome,
+c.info ->> 'cpf' as cpf,
+sum((o.info ->> 'valorTotal')::float) as valor
+from orders o, client c
+where substring((c.info->>'cpf') from 13 for 2)=substring((o.info->>'cliente') from 14 for 2)
+group by nome,c.id
+order by valor desc;
+
+# 2 - Mostre o cliente com maior compra única no último ano (2016). 
+select 
+c.info ->> 'nome' as nome,
+sum((o.info ->> 'valorTotal')::float) as valor
+from orders o, client c
+where substring((c.info->>'cpf') from 13 for 2)=substring((o.info->>'cliente') from 14 for 2)
+and
+substring((o.info->>'data') from 7 for 4) = '2016'
+and
+((o.info ->> 'valorTotal')::float) = (select MAX((o.info->>'valorTotal')::float) from orders o)
+group by nome
+order by valor desc;
+
+# 3 - Liste os clientes mais fiéis. 
+SELECT c.info ->> 'nome' as nome,
+COUNT (o.info ->> 'cliente') as qtd 
+from orders o, client c
+where substring((c.info->>'cpf') from 13 for 2)=substring((o.info->>'cliente') from 14 for 2)
+group by nome
+order by qtd desc;
+
+# 4 - Recomende um vinho para um determinado cliente a partir do histórico de compras.
